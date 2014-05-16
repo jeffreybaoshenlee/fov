@@ -1,0 +1,29 @@
+sample1:
+
+std::string FindString(const std::string &text,
+                       bool search_forward,
+                       bool  case_sensitive);
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+sample2:
+
+enum SearchDirection
+    {
+      FORWARD,
+    BACKWARD
+    };
+enum CaseSensitivity
+    {
+      CASE_SENSITIVE,
+      CASE_INSENSITIVE
+      };
+      
+  std::string FindString(const std::string &text,
+                             SearchDirection direction,
+                             CaseSensitivity case_sensitivity);
