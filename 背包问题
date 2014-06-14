@@ -1,0 +1,207 @@
+                                                      背包问题01
+有n个重量和价值分别为w_i和v_i的物品。从这些物品中挑选出总重量不超过W的物品，求所有挑选方案中价值总和的最大值。
+
+限制条件
+1 <= n <= 100
+1 <= w_i,v_i <= 100
+1 <= W <= 10000
+
+例
+输入 
+n = 4
+(w , v) = {(2,3) , (1,2) , (3 , 4), (2 ,2)}
+W = 5
+
+输出
+ 7
+ 
+ \\输入
+ int n, W;
+ int w[MAX_N], v[MAX_N];
+ 
+ int rec(int i, int j)
+   {
+     int res;
+     if(i == n)
+     {
+      res = 0;
+      }
+      else if(j< w[i])
+      {
+      res = rec(i+1, j);
+      }
+      else
+      {
+      res = max(rec(i+1), j) , rec(i+1, j - w[i]) + v[i]);
+      }
+      
+      return res;
+    }
+    
+void solve()
+{
+cout << rec(0 ,W);
+}
+
+
+      
+                                          记忆化搜索
+                                          
+int dp[MAX_N+1] [MAX_W+1];
+
+int rec(int i, int j)
+ {
+  if(dp[i] [j]  >= 0)
+   {
+    return dp[i] [j];
+   }
+  int res;
+  if(i == n)
+   {
+    res = 0;
+   } 
+  else if (j < w[i])
+   {
+    res = rec(i+1, j);
+   }
+   else
+   {
+    res = max(rec(i+1,j), rec(i +1, j - w[i])+ v[i]);
+    }
+    
+    return dp[i][j] = res;
+ }
+                                                          
+void solve()
+{
+ memset(dp, -1, sizeof(dp));
+ cout << rec(0,W);
+ }                                             
+ 
+ 
+ 
+                                              动态规划法
+        
+int dp[MAX_N +1] [MAX_W + 1];
+
+void solve()
+{
+  for(int i = n -1; i >= 0; i --)
+  {
+   for(int j = 0; j <= W; j++)
+   {
+     if( j < w[i])
+     {
+      dp[i][j] = dp[i + 1][j];
+     }
+      else
+     {
+      dp[i][j] = max(dp[i+1][j] , dp[i+1][j - w[i]] + v[i]);
+      }
+   }  
+ }
+cout << dp[0][W];
+}
+ 
+ 
+ 
+ 
+                                 
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
