@@ -1,0 +1,40 @@
+public static int degree(Graph G ,int v)          计算v的度数
+{
+   int  degree=0;
+   for (int w : G.adj(v)) degree++;
+   return degree；
+}
+ 
+public static int maxDegree(Graph G)                  计算所有顶点的最大度数
+{
+  int max=0;
+  for (int v=0;v<G.V();v++)
+       if(degree(G,v)>max)
+          max=degree(G,V);
+  return max;
+}
+
+public  static double avgDegree(Graph G)            计算所有顶点的平均度数
+{return 2* G.E() / G.V();}
+
+public static int numberOfSelfLoops(Graph G)      计算自环的个数
+{
+   int count=0;
+   for (int v=0 ; v < G.V();v++)
+      for(int w : G.adj(v))
+         if (v== w)count ++;
+    return count/2;
+}
+
+public String toString()             图的邻接表的字符串表示（Graph 的实例方法）
+{
+   String s = V + "vertices, " + E + "edges\n";
+   for (int v = 0; v < V;  v++)
+   {
+       s += v + ": ";
+       for (int w : this.adj(v))
+         s += w + " ";
+       s +="\n";
+    }
+    return s;
+}
